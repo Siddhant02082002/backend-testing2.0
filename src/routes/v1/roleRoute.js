@@ -6,7 +6,7 @@ import roleValidation from '~/validations/roleValidation';
 import roleController from '~/controllers/roleController';
 
 const router = Router();
-
+//212355
 router.get('/', authenticate('role:read'), validate(roleValidation.getRoles), catchAsync(roleController.getRoles));
 router.post('/', authenticate('role:create'), validate(roleValidation.createRole), catchAsync(roleController.createRole));
 router.get('/:roleId', authenticate('role:read'), validate(roleValidation.getRole), catchAsync(roleController.getRole));
