@@ -4,7 +4,6 @@ import app from './app';
 import express from 'express';
 import initialData from './config/initialData';
 import logger from './config/logger';
-import swaggerDocs from './utils/swagger';
 let server;
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;

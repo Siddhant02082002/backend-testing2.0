@@ -12,7 +12,7 @@ import config from '~/config/config';
 import morgan from '~/config/morgan';
 import fs from 'fs';
 import path from 'path';
-
+import YAML from 'js-yaml';
 
 const app = express();
 
@@ -30,7 +30,6 @@ const swaggerDefinition = {
     },
   ],
 };
-
 // Options for the swagger docs
 const options = {
   swaggerDefinition,
@@ -45,6 +44,8 @@ console.log(swaggerSpec); // Ensure this logs valid Swagger documentation
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
+const yamlSpec = YAML.dump(swaggerSpec);
+fs.writeFileSync('./OpenAPI.yml', yamlSpec);
 // Debugging path
 // const testFilePath = path.resolve(__dirname, './routes/v1/test.js');
 // console.log('Path to test.js:', testFilePath);
